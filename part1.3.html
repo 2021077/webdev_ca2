@@ -6,11 +6,9 @@
         <meta name="description" content="SQLite Exercise" />
         <meta name="author" content="" />
         <title>Webdev CA2</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.css">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.js"></script>
         <script>
             function reply_click(clicked_object){
@@ -27,9 +25,9 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="part1.1.html">Part 1.1</a></li>
+                        <li class="nav-item"><a class="nav-link" aria-current="page" href="part1.1.html">Part 1.1</a></li>
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="part1.2.html">Part 1.2</a></li>
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="part1.3.html">Part 1.3</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="part1.3.html">Part 1.3</a></li>
                     </ul>
                 </div>
             </div>
@@ -37,18 +35,18 @@
         <!-- Page content-->
         <div class="container">
             <div class="row">
-                <div class="text-center mt-5">
+                <div class="col-lg-12 text-center mt-5">
                     <h1>CA2: Data Manipulation & Validation</h1>
-                    <p class="lead">This is Part1.1</p>
+                    <p class="lead">This is Part1.3</p>
                 </div>
                 <div class="col-lg-2 order-1 mb-3 d-flex flex-column gap-2 mx-auto align-items-stretch">
-                    <button name="1.1.1" class="btn btn-success btn-block"data-sql="SELECT * from departments LIMIT 100" onClick="reply_click(this)">1.3.1</button>
-                    <button name="1.1.1" class="btn btn-success btn-block"data-sql="SELECT emp_id,first_name,last_name FROM employees LIMIT 100" onClick="reply_click(this)">1.3.2</button>
-                    <button name="1.1.1" class="btn btn-success btn-block"data-sql="SELECT dept_name FROM departments LIMIT 100" onClick="reply_click(this)">1.3.3</button>
-                    <button name="1.1.1" class="btn btn-success btn-block"data-sql="SELECT distinct title FROM titles Order by title LIMIT 100" onClick="reply_click(this)">1.3.4</button>
-                    <button name="1.1.1" class="btn btn-success btn-block"data-sql="SELECT first_name,last_name FROM employees order by  first_name,last_name LIMIT 100" onClick="reply_click(this)">1.3.5</button>
-                    <button name="1.1.1" class="btn btn-success btn-block"data-sql="SELECT * from departments LIMIT 100" onClick="reply_click(this)">1.3.6</button>
-                    <button name="1.1.1" class="btn btn-success btn-block"data-sql="SELECT * from departments LIMIT 100" onClick="reply_click(this)">1.3.7</button>
+                    <button name="1.3.1" class="btn btn-success btn-block" data-sql="SELECT dept_id, sum(gender ='F') AS num_empFemale,&#10;sum(gender = 'M') AS num_empMale&#10;FROM dept_manager dm INNER JOIN employees e&#10;ON dm.emp_id = e.emp_id GROUP BY dept_id order by dept_id ASC &#10;LIMIT 100" onClick="reply_click(this)">1.3.1</button>
+                    <button name="1.3.2" class="btn btn-success btn-block" data-sql="SELECT gender ,avg(salary) as avg_salary, title &#10;FROM employees e &#10;JOIN salaries s &#10;ON e.emp_id = s.emp_id &#10;JOIN titles t &#10;ON e.emp_id = t.emp_id &#10;WHERE title = 'Technique Leader' &#10;GROUP BY gender &#10;LIMIT 100" onClick="reply_click(this)">1.3.2 </button>
+                    <button name="1.3.3" class="btn btn-success btn-block" data-sql="SELECT count(emp_id) as nuemployees &#10;FROM salaries &#10;Where to_date ='9999-01-01' and (salary>90000 and salary<90040) &#10;LIMIT 100" onClick="reply_click(this)">1.3.3</button>
+                    <button name="1.3.4" class="btn btn-success btn-block" data-sql="SELECT last_name,first_name,salary &#10;FROM employees e &#10;INNER JOIN salaries s on e.emp_id = s.emp_id &#10;WHERE salary>'90000' AND to_date = '9999-01-01' &#10;GROUP BY last_name,first_name &#10;ORDER BY LOWER(last_name) DESC, LOWER(first_name) DESC &#10;LIMIT 100" onClick="reply_click(this)">1.3.4</button>
+                    <button name="1.3.5" class="btn btn-success btn-block" data-sql="SELECT first_name,last_name,salary,from_date,to_date &#10;FROM employees e &#10;INNER JOIN salaries s ON e.emp_id = s.emp_id &#10;WHERE e.emp_id = 10012 &#10;LIMIT 100" onClick="reply_click(this)">1.3.5</button>
+                    <button name="1.3.6" class="btn btn-success btn-block" data-sql="A)4 &#10B)6" onClick="reply_click(this)">1.3.6</button>
+                    <button name="1.3.7" class="btn btn-success btn-block" data-sql="It was too long an answer to write in here." onClick="reply_click(this)">1.3.7</button>
                 </div>
                 <div class="col-lg-10 order-2 border-success">
                     <textarea id="commands" class="mb-5">TEXT</textarea>
